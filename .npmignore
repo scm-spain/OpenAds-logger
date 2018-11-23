@@ -1,0 +1,7 @@
+src
+coverage
+.travis.yml
+.idea
+.eslintignore
+.github
+resources
