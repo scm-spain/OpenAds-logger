@@ -52,4 +52,4 @@ LOG.debug('I need to log a line manually')
 ```
 
 # License
-OpenAds is [MIT licensed](./LICENSE).
+OpenAds-logger is [MIT licensed](./LICENSE).
