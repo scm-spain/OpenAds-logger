@@ -1,0 +1,59 @@
+{
+  "name": "@schibstedspain/openads-logger",
+  "version": "1.0.0",
+  "description": "OpenAds Logger: Log utility for OpenAds and its connectors",
+  "main": "dist/",
+  "scripts": {
+    "cleanDistFolder": "rm -Rf ./dist",
+    "prepublishOnly": "npm run cleanDistFolder && npm run build",
+    "build": "npm run cleanDistFolder && babel src --ignore test --out-dir dist ",
+    "test": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"src/test/**/*.js\"",
+    "test:integration": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"src/itest/openads/**/*.js\"",
+    "coverage": "istanbul cover --report html _mocha -- ./src/*test --recursive --compilers js:babel-register",
+    "coverage:ci": "istanbul cover _mocha -- ./src/*test --recursive --compilers js:babel-register && codecov",
+    "watch": "onchange 'src/**/*.js' -- npm run build",
+    "lint": "sui-lint js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scm-spain/OpenAds-logger.git"
+  },
+  "keywords": [
+    "ads",
+    "advertising",
+    "schibsted",
+    "log"
+  ],
+  "author": "One Punch Team",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/lint": "^2.19.0",
+    "@s-ui/perf": "^1.4.0",
+    "babel-cli": "^6.24.0",
+    "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-sui": "^1.9.0",
+    "babel-register": "^6.24.0",
+    "chai": "^4.2.0",
+    "codecov": "^3.1.0",
+    "istanbul": "^1.1.0-alpha.1",
+    "jsdom": "^11.12.0",
+    "mocha": "^5.2.0",
+    "sinon": "^2.3.4"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "babel": {
+    "presets": [
+      "sui"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "dependencies": {}
+}
